@@ -25,22 +25,48 @@ s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-
 s3://swe-bench-experiments/bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/
 ```
 
+## Sample Trajectories
+
+This repository includes sample trajectory files from the Gemini 3 Pro 74.2% run in `sample_trajectories/gemini-3-pro-74pct/`:
+
+- `django__django-10097.traj.json` - Django framework issue
+- `sympy__sympy-11618.traj.json` - SymPy symbolic math issue
+- `matplotlib__matplotlib-13989.traj.json` - Matplotlib plotting issue
+- `scikit-learn__scikit-learn-10297.traj.json` - Scikit-learn ML issue
+- `sphinx-doc__sphinx-10323.traj.json` - Sphinx documentation issue
+
+These demonstrate the full agent conversation including THOUGHT sections, bash commands, and outputs.
+
 ## How to Download Results
 
-### Option 1: AWS CLI Direct Download
+### Option 1: AWS CLI Without Credentials (Recommended)
+
+The S3 bucket is publicly accessible. Use `--no-sign-request` to download without AWS credentials:
 
 ```bash
-# Install and configure AWS CLI
-aws configure
+# Install AWS CLI (no account/configuration needed)
+pip install awscli
 
-# Download all results for a specific model
-aws s3 sync s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-20251118/ ./gemini-results/
+# List available submissions
+aws s3 ls s3://swe-bench-experiments/bash-only/ --no-sign-request
 
-# Download only trajectories
-aws s3 sync s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-20251118/trajs/ ./trajs/
+# Download all trajectories for a specific model
+aws s3 sync s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-20251118/trajs/ ./trajs/ --no-sign-request
+
+# Download a single trajectory
+aws s3 cp s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-20251118/trajs/django__django-10097/django__django-10097.traj.json . --no-sign-request
 ```
 
-### Option 2: Using the Experiments Repository
+### Option 2: AWS CLI With Credentials
+
+If you have AWS credentials configured:
+
+```bash
+aws configure
+aws s3 sync s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-20251118/ ./gemini-results/
+```
+
+### Option 3: Using the Experiments Repository
 
 ```bash
 git clone https://github.com/SWE-bench/experiments
