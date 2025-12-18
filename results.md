@@ -25,17 +25,35 @@ s3://swe-bench-experiments/bash-only/20251118_mini-v1.15.0_gemini-3-pro-preview-
 s3://swe-bench-experiments/bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/
 ```
 
-## Sample Trajectories
+## Full Results: Gemini 3 Pro (74.2%)
 
-This repository includes sample trajectory files from the Gemini 3 Pro 74.2% run in `sample_trajectories/gemini-3-pro-74pct/`:
+This repository includes **all 500 trajectory files** from the Gemini 3 Pro SWE-bench Verified run:
 
-- `django__django-10097.traj.json` - Django framework issue
-- `sympy__sympy-11618.traj.json` - SymPy symbolic math issue
-- `matplotlib__matplotlib-13989.traj.json` - Matplotlib plotting issue
-- `scikit-learn__scikit-learn-10297.traj.json` - Scikit-learn ML issue
-- `sphinx-doc__sphinx-10323.traj.json` - Sphinx documentation issue
+📁 **[swebench_results/20251118_gemini-3-pro-74pct/](swebench_results/20251118_gemini-3-pro-74pct/)**
 
-These demonstrate the full agent conversation including THOUGHT sections, bash commands, and outputs.
+- **[RESULTS.md](swebench_results/20251118_gemini-3-pro-74pct/RESULTS.md)** - Full results with links to each trajectory, grouped by repository and pass/fail status
+- **[results_summary.json](swebench_results/20251118_gemini-3-pro-74pct/results_summary.json)** - Machine-readable summary
+- **[results_summary.csv](swebench_results/20251118_gemini-3-pro-74pct/results_summary.csv)** - CSV format for spreadsheet analysis
+- **trajs/** - All 500 trajectory files (.traj.json)
+- **logs/** - Evaluation reports (report.json with pass/fail status)
+
+### Results by Repository
+
+| Repository | Passed | Failed | Pass Rate |
+|------------|--------|--------|-----------|
+| django | 179 | 52 | 77% |
+| sympy | 54 | 21 | 72% |
+| sphinx-doc | 30 | 14 | 68% |
+| scikit-learn | 29 | 3 | 91% |
+| matplotlib | 25 | 9 | 74% |
+| pydata | 18 | 4 | 82% |
+| pytest-dev | 15 | 4 | 79% |
+| astropy | 13 | 9 | 59% |
+| psf | 5 | 3 | 63% |
+| pylint-dev | 2 | 8 | 20% |
+| pallets | 1 | 0 | 100% |
+| mwaskom | 0 | 2 | 0% |
+| **Total** | **371** | **129** | **74.2%** |
 
 ## How to Download Results
 
