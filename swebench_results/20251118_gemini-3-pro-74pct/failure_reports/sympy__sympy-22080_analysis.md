@@ -1,0 +1,42 @@
+# Failure Analysis: sympy__sympy-22080
+
+## Basic Info
+```
+{
+  "exit_status": "Submitted",
+  "api_calls": 80,
+  "cost": 0.9323241999999999
+}
+```
+
+## Token Usage
+- Max prompt tokens: 41458
+
+## Files Modified in Submission
+```
+- sympy/printing/pycode.py
+```
+
+## Rule Violation Check
+
+## Agent Reasoning About Tests
+```
+```
+
+## Submission Diff (first 100 lines)
+```diff
+diff --git a/sympy/printing/pycode.py b/sympy/printing/pycode.py
+index b669a2c783..71e36316bd 100644
+--- a/sympy/printing/pycode.py
++++ b/sympy/printing/pycode.py
+@@ -234,7 +234,7 @@ def _print_ComplexInfinity(self, expr):
+ 
+     def _print_Mod(self, expr):
+         PREC = precedence(expr)
+-        return ('{} % {}'.format(*map(lambda x: self.parenthesize(x, PREC), expr.args)))
++        return ('({} % {})'.format(*map(lambda x: self.parenthesize(x, PREC), expr.args)))
+ 
+     def _print_Piecewise(self, expr):
+         result = []
+
+```
